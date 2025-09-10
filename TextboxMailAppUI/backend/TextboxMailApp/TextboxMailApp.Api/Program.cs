@@ -8,7 +8,6 @@ using TextboxMailApp.Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.  
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle  
@@ -31,7 +30,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate(); // Eksik tablolar varsa oluþturur
+    db.Database.Migrate(); // Eksik tablolar varsa oluÃ¾turur
 }
 app.UseCors("AllowAngular");
 
