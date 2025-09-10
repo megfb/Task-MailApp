@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class EmailsComponent implements OnInit {
 
-  emails: Email[] = []; // ← Bu satır eklendi
+  emails: Email[] = []; 
   pageNumber: number = 1;
   pageSize: number = 10;
   isLoading: boolean = false;
