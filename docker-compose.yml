@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:16
+    container_name: task-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: taskdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - task-network
+      
+  backend:
+    build:
+      context: ./TextboxMailAppUI  # C:\Users\Mehmet\Desktop\MailApp\TextboxMailAppUI
+      dockerfile: backend/TextboxMailApp/TextboxMailApp.Api/Dockerfile
+    container_name: task-backend
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=taskdb;Username=postgres;Password=1234"
+    depends_on:
+      - db
+    ports:
+      - "7135:8080"
+    restart: always
+    networks:
+      - task-network
+
+  frontend:
+    build:
+      context: ./TextboxMailAppUI
+      dockerfile: Dockerfile
+    container_name: task-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    restart: always
+    networks:
+      - task-network
+
+volumes:
+  db_data:
+
+networks:
+  task-network:
+    driver: bridge

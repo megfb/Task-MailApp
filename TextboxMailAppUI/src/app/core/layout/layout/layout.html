@@ -1,0 +1,25 @@
+<!-- Navbar -->
+<app-navbar (logoutClicked)="logout()"></app-navbar>
+
+
+<!-- Mobile  Sidebar -->
+<app-sidebar></app-sidebar>
+
+<!-- Main Layout Wrapper -->
+<div class="d-flex flex-column flex-lg-row min-vh-100">
+  <!-- Sidebar -->
+  <div class="bg-light border-end vh-lg-100 p-3 d-none d-lg-block" style="width: 250px;">
+    <h5 class="fw-bold text-primary mb-4">Profil</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2"><button class="nav-link text-primary" (click)="RouteToProfile()"><i class="bi bi-house-door me-2"></i> Bilgiler</button></li>
+
+    </ul>
+  </div>
+
+  <!-- Content  -->
+  <div class="flex-grow-1 p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<app-footer></app-footer>

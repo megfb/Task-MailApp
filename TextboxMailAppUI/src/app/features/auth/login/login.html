@@ -1,0 +1,60 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-4">Giriş Yap</h3>
+
+      <form (ngSubmit)="onSubmit()">
+        <!-- Kullanıcı Adı -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Kullanıcı Adı</label>
+          <input 
+            id="username" 
+            class="form-control" 
+            [(ngModel)]="username" 
+            name="username" 
+            required
+            placeholder="Kullanıcı adınızı girin" />
+        </div>
+
+        <!-- Şifre -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Şifre</label>
+          <input 
+            id="password" 
+            type="password" 
+            class="form-control" 
+            [(ngModel)]="password" 
+            name="password" 
+            required
+            placeholder="Şifrenizi girin" />
+        </div>
+
+        <!-- Giriş Butonu -->
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-primary">Giriş Yap</button>
+        </div>
+      </form>
+
+      <!-- Register Butonu -->
+      <div class="text-center">
+        <button class="btn btn-outline-secondary" (click)="RouteRegister()">Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Toast -->
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 1055">
+  @for ( toast of toasts; track toast) {
+    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div [ngClass]="toast.type === 'error' ? 'toast-header bg-danger text-white' : 'toast-header bg-success text-white'">
+        <strong class="me-auto">{{ toast.type === 'error' ? 'Hata' : 'Başarılı' }}</strong>
+        <button type="button" class="btn-close" (click)="removeToast(toast)" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        {{ toast.message }}
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,72 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4" style="max-width: 450px; width: 100%;">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-4">Kayıt Ol</h3>
+
+      <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="userName" class="form-label">Kullanıcı Adı</label>
+          <input id="userName" class="form-control" [(ngModel)]="userName" name="userName" required
+            placeholder="Kullanıcı adınızı girin" />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Şifre</label>
+          <input id="password" type="password" class="form-control" [(ngModel)]="password" name="password" required
+            placeholder="Şifrenizi girin" />
+        </div>
+
+        <div class="mb-3">
+          <label for="emailAddress" class="form-label">Email Adresi</label>
+          <input id="emailAddress" type="email" class="form-control" [(ngModel)]="emailAddress" name="emailAddress"
+            required placeholder="Email adresinizi girin" />
+        </div>
+
+        <div class="mb-3">
+          <label for="emailPassword" class="form-label">Email Şifresi</label>
+          <input id="emailPassword" type="password" class="form-control" [(ngModel)]="emailPassword"
+            name="emailPassword" placeholder="Opsiyonel" />
+        </div>
+
+        <div class="mb-3">
+          <label for="serverName" class="form-label">Sunucu Adı</label>
+          <input id="serverName" class="form-control" [(ngModel)]="serverName" name="serverName"
+            placeholder="Opsiyonel" />
+        </div>
+
+        <div class="mb-3">
+          <label for="port" class="form-label">Port</label>
+          <input id="port" type="number" class="form-control" [(ngModel)]="port" name="port" placeholder="Opsiyonel" />
+        </div>
+
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+            @if (isLoading) { <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Kayıt oluyor... }
+            @if (!isLoading) { Kayıt Ol }
+          </button>
+        </div>
+      </form>
+
+      <div class="text-center">
+        <button class="btn btn-outline-secondary" (click)="goToLogin()">Giriş Yap</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 1055">
+  @for ( toast of toasts; track toast) {
+  <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div
+      [ngClass]="toast.type === 'error' ? 'toast-header bg-danger text-white' : 'toast-header bg-success text-white'">
+      <strong class="me-auto">{{ toast.type === 'error' ? 'Hata' : 'Başarılı' }}</strong>
+      <button type="button" class="btn-close" (click)="removeToast(toast)" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      {{ toast.message }}
+    </div>
+  </div>
+  }
+</div>

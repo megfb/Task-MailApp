@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-primary">E-Posta Yönetim</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="btn btn-outline-primary d-lg-none ms-2" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><button class="nav-link text-primary" (click)="RouteToEmails()"><i
+              class="bi bi-envelope me-1"></i>E-Postalar</button></li>
+        <li class="nav-item">
+          <button class="btn btn-outline-primary rounded-pill px-3 ms-2" (click)="onLogout()">
+            <i class="bi bi-box-arrow-right me-1"></i> Çıkış
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
