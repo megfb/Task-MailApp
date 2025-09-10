@@ -6,7 +6,7 @@ Projeyi Docker kullanmadan kendi bilgisayarınızda çalıştırmak için aşağ
 - .NET 8 SDK
 - Node.js ve npm
 - Angular CLI
-- PostgreSQL (veya bağlantı kurulacak başka bir veritabanı)
+- PostgreSQL
 
 ## 1. Backend (API) Çalıştırma
 1. `TextboxMailAppAPI` klasörüne gidin:
