@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EmailService {
-  private apiUrl = 'http://localhost:7135/api/Email';
+  private apiUrl = 'https://localhost:7135/api/Email';
 
   constructor(private http: HttpClient) {}
 

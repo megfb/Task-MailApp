@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EmailService } from '../../../core/services/email.service';
 import { Email } from '../../../core/models/email.model';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-emails',
@@ -13,14 +14,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class EmailsComponent implements OnInit {
 
-  emails: Email[] = []; 
+  emails: Email[] = [];
   pageNumber: number = 1;
   pageSize: number = 10;
   isLoading: boolean = false;
   searchTerm?: string; // arama input değeri
   sortBy: string | null = null;
   sortDesc: boolean = true; // Başlangıçta azalan sıralama  
-  constructor(private emailService: EmailService) { }
+  safeBody?: SafeHtml;
+
+  constructor(private emailService: EmailService, private sanitizer: DomSanitizer) { }
 
   //sayfa açıldığında mailler çekilir
   ngOnInit(): void {
@@ -79,18 +82,27 @@ export class EmailsComponent implements OnInit {
   selectedEmail: any = null;
   isModalOpen: boolean = false;
 
-  
-  //modal açılır. mail detayları gösterilir.
+
+  // //modal açılır. mail detayları gösterilir.
+  // showEmailDetail(id: string) {
+  //   this.emailService.GetMail(id).subscribe({
+  //     next: (res) => {
+  //       this.selectedEmail = res.data; // backend'den gelen mail objesi
+  //       this.isModalOpen = true;
+  //     },
+  //     error: (err) => console.error('Detay fetch error:', err)
+  //   });
+  // }
   showEmailDetail(id: string) {
     this.emailService.GetMail(id).subscribe({
       next: (res) => {
-        this.selectedEmail = res.data; // backend'den gelen mail objesi
+        this.selectedEmail = res.data;
+        this.safeBody = this.sanitizer.bypassSecurityTrustHtml(res.data.body);
         this.isModalOpen = true;
       },
       error: (err) => console.error('Detay fetch error:', err)
     });
   }
-
   //modal kapatılır
   closeModal() {
     this.isModalOpen = false;

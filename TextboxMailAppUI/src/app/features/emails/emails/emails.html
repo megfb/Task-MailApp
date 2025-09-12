@@ -118,8 +118,8 @@
           <hr class="my-3">
           <div>
             <strong class="text-primary fw-semibold">İçerik:</strong>
-            <div class="bg-light p-3 rounded-2 mt-2" style="white-space: pre-wrap;">
-              {{selectedEmail.body}}
+            <div class="bg-light p-3 rounded-2 mt-2">
+              <div [innerHTML]="safeBody"></div>
             </div>
           </div>
         </div>
@@ -131,4 +131,3 @@
     </div>
   </div>
 </div>
-

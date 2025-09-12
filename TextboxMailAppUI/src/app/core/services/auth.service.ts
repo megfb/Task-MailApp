@@ -10,7 +10,7 @@ import { RegisterModel } from '../models/register.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:7135/api/Auth';
+  private apiUrl = 'https://localhost:7135/api/Auth';
 
   constructor(private http: HttpClient, private router: Router) {}
 
