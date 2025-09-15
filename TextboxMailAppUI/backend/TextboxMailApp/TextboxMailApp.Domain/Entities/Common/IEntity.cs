@@ -1,6 +1,6 @@
-﻿namespace TextboxMailApp.Domain.Entities.Common
+namespace TextboxMailApp.Domain.Entities.Common
 {
-    public interface IEntity
-    {
-    }
+  public interface IEntity
+  {
+  }
 }

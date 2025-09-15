@@ -1,7 +1,7 @@
-﻿namespace TextboxMailApp.Application.Contracts.Api
+namespace TextboxMailApp.Application.Contracts.Api
 {
-    public interface ICurrentUserService
-    {
-        string? UserId { get; }
-    }
+  public interface ICurrentUserService
+  {
+    string? UserId { get; }
+  }
 }

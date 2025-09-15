@@ -1,32 +1,32 @@
-﻿using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;
 
 namespace TextboxMailApp.Api.Extensions
 {
-    public static class SwaggerService
+  public static class SwaggerService
+  {
+    public static IServiceCollection AddSwaggerService(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddSwaggerService(this IServiceCollection services, IConfiguration configuration)
+      services.AddSwaggerGen(c =>
+      {
+        c.SwaggerDoc("v1", new OpenApiInfo
         {
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "TextboxMailApp API",
-                    Version = "v1"
-                });
+          Title = "TextboxMailApp API",
+          Version = "v1"
+        });
 
-                // 🔑 JWT Auth için ayar
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Description = "JWT Authorization header. Example: \"Bearer {token}\""
-                });
+        // 🔑 JWT Auth için ayar
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+          Name = "Authorization",
+          Type = SecuritySchemeType.Http,
+          Scheme = "bearer",
+          BearerFormat = "JWT",
+          In = ParameterLocation.Header,
+          Description = "JWT Authorization header. Example: \"Bearer {token}\""
+        });
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+          {
                     {
                         new OpenApiSecurityScheme
                         {
@@ -38,10 +38,10 @@ namespace TextboxMailApp.Api.Extensions
                         },
                         new string[] {}
                     }
-                });
-            });
+          });
+      });
 
-            return services;
-        }
+      return services;
     }
+  }
 }

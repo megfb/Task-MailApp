@@ -1,9 +1,9 @@
-﻿using TextboxMailApp.Domain.Entities;
+using TextboxMailApp.Domain.Entities;
 
 namespace TextboxMailApp.Application.Contracts.Persistence
 {
-    public interface IUserRepository : IGenericRepository<User>
-    {
-        Task<User> GetByUserNameOrEmailAsync(string userName, string email);
-    }
+  public interface IUserRepository : IGenericRepository<User>
+  {
+    Task<User> GetByUserNameOrEmailAsync(string userName, string email);
+  }
 }

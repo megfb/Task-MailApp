@@ -28,4 +28,15 @@ export class UserService {
       })
     );
   }
+
+    // 🗑 user delete
+  deleteUser(): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/Delete`, { headers: this.getAuthHeaders() }).pipe(
+      tap(() => console.log('Kullanıcı silindi')),
+      catchError(err => {
+        console.error('deleteUser hatası:', err);
+        return EMPTY;
+      })
+    );
+  }
 }

@@ -5,14 +5,14 @@ using TextboxMailApp.Application.Features.Users.Commands;
 
 namespace TextboxMailApp.Application.Features.Users.CommandHandlers
 {
-  public class CreateUserCommandHandler(IUserCommandService userService) : IRequestHandler<CreateUserCommand, ApiResult<UsersDto>>
+  public class DeleteUserCommandHandler(IUserCommandService userService) : IRequestHandler<DeleteUserCommand, ApiResult<string>>
   {
 
     private readonly IUserCommandService _userService = userService ?? throw new ArgumentNullException(nameof(userService));
-    public Task<ApiResult<UsersDto>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public Task<ApiResult<string>> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
     {
-
-      return _userService.CreateUserAsync(request, cancellationToken);
+      return _userService.DeleteUserAsync(request, cancellationToken);
     }
+
   }
 }

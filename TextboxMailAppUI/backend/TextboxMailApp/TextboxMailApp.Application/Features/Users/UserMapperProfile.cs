@@ -1,13 +1,13 @@
-﻿using AutoMapper;
+using AutoMapper;
 using TextboxMailApp.Domain.Entities;
 
 namespace TextboxMailApp.Application.Features.Users
 {
-    public class UserMapperProfile : Profile
+  public class UserMapperProfile : Profile
+  {
+    public UserMapperProfile()
     {
-        public UserMapperProfile()
-        {
-            CreateMap<User, UsersDto>().ReverseMap();
-        }
+      CreateMap<User, UsersDto>().ReverseMap();
     }
+  }
 }
